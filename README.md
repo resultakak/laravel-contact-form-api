@@ -1,24 +1,14 @@
 # Laravel Contact Form API
 
-## Install
+## API
 
-```bash
-curl -s https://raw.githubusercontent.com/resultakak/laravel-contact-form-api/main/install.sh | bash
-```
+### [Postman Collection](ContactFormAPI.postman_collection.json)
 
-or 
+## Configuration
 
 ```bash
 cp .env.example .env
-
-composer install
-
-./vendor/bin/sail up -d
-
-docker-compose exec laravel.test sh setup.sh
 ```
-
-## Configuration
 
 ```ini
 # .env file
@@ -32,6 +22,11 @@ MAIL_FROM_ADDRESS=noreply@example.com
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 
-## API
+## Install
 
-### [Postman Collection](ContactFormAPI.postman_collection.json)
+```bash
+composer install
+./vendor/bin/sail up -d
+docker-compose exec laravel.test php artisan migrate
+docker-compose exec laravel.test php artisan db:seed
+```
