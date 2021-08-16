@@ -12,12 +12,12 @@ class Contact extends Model
     /**
      * @var string $table
      */
-    protected string $table = 'messages';
+    protected $table = 'messages';
 
     /**
      * @var array|string[] $fillable
      */
-    protected array $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'subject',
