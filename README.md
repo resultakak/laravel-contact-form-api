@@ -1,2 +1,7 @@
-# laravel-contact-form-api
-Laravel Contact Form API
+# Laravel Contact Form API
+
+## Install
+
+```bash
+docker-compose exec laravel.test sh setup.sh
+```
