@@ -3,5 +3,5 @@
 ## Install
 
 ```bash
-docker-compose exec laravel.test sh setup.sh
+curl -s https://github.com/resultakak/laravel-contact-form-api/blob/main/install.sh | bash
 ```
