@@ -73,12 +73,22 @@ services:
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
         networks:
             - sail
-    selenium:
-       image: 'selenium/standalone-chrome'
-       volumes:
-            - '/dev/shm:/dev/shm'
-       networks:
-           - sail
+    supervisor:
+        build:
+            dockerfile: Dockerfile
+            context: ./build/supervisord/
+        container_name: supervisor
+        restart: unless-stopped
+        volumes:
+            - '.:/var/www/html'
+        networks:
+            - sail
+        env_file:
+            - .env
+        depends_on:
+            - laravel.test
+        tty: true
+
 networks:
     sail:
         driver: bridge
