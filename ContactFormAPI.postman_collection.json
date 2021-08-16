@@ -1,0 +1,458 @@
+{
+	"info": {
+		"_postman_id": "b78229c7-1763-4bd2-9c96-986607296976",
+		"name": "Contact Form API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "token",
+			"item": [
+				{
+					"name": "token/register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"if(resp.token) {",
+									"    pm.collectionVariables.set(\"token\", resp.token);",
+									"}",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.token).to.be.a(\"string\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Cookie XSRF-TOKEN is present\", () => {",
+									"  pm.expect(pm.cookies.has('XSRF-TOKEN')).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Resul Takak\",\n    \"email\": \"resultakak101@maildrop.cc\",\n    \"password\": \"P@ssw0rd!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/token/register",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"token",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "token/create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"if(resp.token) {",
+									"    pm.collectionVariables.set(\"token\", resp.token);",
+									"}",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.token).to.be.a(\"string\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Cookie XSRF-TOKEN is present\", () => {",
+									"  pm.expect(pm.cookies.has('XSRF-TOKEN')).to.be.true;",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"resultakak101@maildrop.cc\",\n    \"password\": \"P@ssw0rd!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/token/create",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"token",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "contacts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.data).to.be.a(\"object\");",
+									"});",
+									"",
+									"pm.test(\"Successful POST request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200,201]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@maildrop.cc\",\n    \"subject\": \"Hi there!\",\n    \"body\": \"Lorem ipsum sit dolar amet\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}api/v1/contacts",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contacts",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.data).to.be.a(\"array\");",
+									"});",
+									"",
+									"pm.test(\"Successful GET request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/v1/contacts?page=&search=",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"contacts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "search",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contacts/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.data).to.be.a(\"object\");",
+									"});",
+									"",
+									"pm.test(\"Successful GET request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/v1/contacts/1",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"contacts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "contacts/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const resp = pm.response.json();",
+									"",
+									"pm.test(\"Test data type of the response\", () => {",
+									"  pm.expect(resp.data).to.be.a(\"object\");",
+									"});",
+									"",
+									"pm.test(\"Successful DELETE request\", () => {",
+									"  pm.expect(pm.response.code).to.be.oneOf([200]);",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is present\", () => {",
+									"  pm.response.to.have.header(\"Content-Type\");",
+									"});",
+									"",
+									"pm.test(\"Content-Type header is application/json\", () => {",
+									"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');",
+									"});",
+									"",
+									"pm.test(\"Response time is less than 200ms\", () => {",
+									"  pm.expect(pm.response.responseTime).to.be.below(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}api/v1/contacts/1",
+							"host": [
+								"{{url}}api"
+							],
+							"path": [
+								"v1",
+								"contacts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost/"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
