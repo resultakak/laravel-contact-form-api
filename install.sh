@@ -10,6 +10,8 @@ cp .env.example .env
 
 chmod +x setup.sh
 
-docker-compose up -d
+composer install
+
+./vendor/bin/sail up -d
 
 docker-compose exec laravel.test sh setup.sh
