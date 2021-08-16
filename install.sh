@@ -8,8 +8,6 @@ cd ./laravel-contact-form-api
 
 cp .env.example .env
 
-chmod +x setup.sh
-
 composer install
 
 ./vendor/bin/sail up -d
