@@ -2,7 +2,7 @@
 
 # (>_ resultakak@gmail.com)
 
-https://github.com/resultakak/laravel-contact-form-api.git
+git clone https://github.com/resultakak/laravel-contact-form-api.git
 
 cd ./laravel-contact-form-api
 
