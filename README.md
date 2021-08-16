@@ -30,3 +30,9 @@ composer install
 docker-compose exec laravel.test php artisan migrate
 docker-compose exec laravel.test php artisan db:seed
 ```
+
+## Test
+
+```bash
+curl -I http://localhost/
+```
