@@ -3,5 +3,5 @@
 ## Install
 
 ```bash
-curl -s https://github.com/resultakak/laravel-contact-form-api/blob/main/install.sh | bash
+curl -s https://raw.githubusercontent.com/resultakak/laravel-contact-form-api/main/install.sh | bash
 ```
