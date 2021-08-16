@@ -36,3 +36,9 @@ docker-compose exec laravel.test php artisan db:seed
 ```bash
 curl -I http://localhost/
 ```
+
+## Run
+
+```bash
+docker-compose exec laravel.test php artisan queue:work
+```
