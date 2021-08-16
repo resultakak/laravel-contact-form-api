@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
+use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,6 +60,14 @@ Route::post('/v1/token/create', function (Request $request) {
     return ['token' => $user->createToken($request->email)->plainTextToken];
 });
 
+Route::post('/v1/contacts', [ContactController::class, 'store']);
+
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    Route::get('/v1/contacts', [ContactController::class, 'index']);
+
+    Route::get('/v1/contacts/{id}', [ContactController::class, 'show']);
+
+    Route::delete('/v1/contacts/{id}', [ContactController::class, 'destroy']);
 
 });
