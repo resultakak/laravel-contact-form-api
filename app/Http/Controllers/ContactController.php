@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ContactResource;
+use App\Mail\ContactMessage;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -59,6 +61,7 @@ class ContactController extends Controller
         $contact->subject = $request->subject;
         $contact->body = $request->body;
         if($contact->save()) {
+            Mail::to($request->email)->queue(new ContactMessage($contact));
             return new ContactResource($contact);
         }
     }
